@@ -1,19 +1,17 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-export default function MenuCard() {
+export default function MenuCard({ props }) {
   return (
     <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+      <Card.Img variant="top" src={props.img} />
+      <Card.Body className="flex-fill row align-items-end">
+        <Card.Title>{props.name}</Card.Title>
+        <Card.Text>{props.desc}</Card.Text>
+        <Button variant="primary" className="col">
+          Go somewhere
+        </Button>
       </Card.Body>
     </Card>
   );
 }
-

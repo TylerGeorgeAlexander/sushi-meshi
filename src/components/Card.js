@@ -4,7 +4,7 @@ import { BsCartPlusFill } from "react-icons/bs";
 
 export default function MenuCard({ props }) {
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card className="box-shadow" style={{ width: "18rem" }}>
       <Card.Img className="card-image-top img-fluid" variant="top" src={props.img} />
       <Card.Body className="flex-fill row align-items-end justify-content-center">
         <Card.Title>{props.name}</Card.Title>

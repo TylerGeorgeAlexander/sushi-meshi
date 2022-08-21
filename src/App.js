@@ -6,6 +6,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NoPage from "./pages/NoPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AddToMenu from "./pages/AddToMenu";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" />
           <Route path="menu" element={<Menu />} />
+          <Route path="addtomenu" element={<AddToMenu />} />
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
           <Route index element={<Home />} />

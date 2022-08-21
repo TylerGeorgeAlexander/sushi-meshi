@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Card from "../components/Card";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-const data = [
+const dummyData = [
   {
     name: "Rainbow Roll",
     price: 11.99,
@@ -30,18 +30,44 @@ const data = [
     desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum voluptates voluptatibus maiores illum dicta animi debitis ad aperiam omnis molestias!",
   },
 ];
+
+
+
 export default function Menu() {
+  const [data, setData] = useState(null);
+
+//   setData(
+//  // Simple GET request using fetch
+// fetch("http://localhost:2121/menu")
+// .then((response) => response.json())
+// .then((data) => this.setState({ data: data }))
+//   )
+ 
+useEffect(() => {
+  const url = "http://localhost:2121/menu";
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(url);
+      const json = await response.json();
+      console.log(json);
+      setData(json)
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
+  fetchData();
+}, []);
+
   return (
     <div>
       <h1 className="menu-font">Menu</h1>
       <Container fluid className="d-flex justify-content-center">
         <Row className="h-100">
-          {data.map((props) => (
+          {data && data.map((props) => (
             <Col className="d-flex justify-content-center">
-              <Card
-                props={props}
-                className=""
-              />
+              <Card props={props} className="" />
             </Col>
           ))}
         </Row>

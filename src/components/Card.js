@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { BsCartPlusFill } from "react-icons/bs";
 
-export default function MenuCard({ props, index }) {
+export default function MenuCard({ props }) {
   return (
     <Card className="box-shadow m-2" style={{ width: "18rem" }}>
       <Card.Img

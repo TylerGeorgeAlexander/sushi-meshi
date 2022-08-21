@@ -9,6 +9,7 @@ function NavBar() {
         <Container>
           <Navbar.Brand href="/">Home</Navbar.Brand>
           <Nav className="">
+            <Nav.Link href="/addtomenu">Add To Menu</Nav.Link>
             <Nav.Link href="/menu">Menu</Nav.Link>
             <Nav.Link href="/about">About Us</Nav.Link>
             <Nav.Link href="/contact">Contact</Nav.Link>

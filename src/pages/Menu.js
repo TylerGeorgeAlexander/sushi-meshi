@@ -33,7 +33,7 @@ const data = [
 export default function Menu() {
   return (
     <div>
-      <h1>Menu</h1>
+      <h1 className="menu-font">Menu</h1>
       <Container fluid className="d-flex justify-content-center">
         <Row className="h-100">
           {data.map((props) => (

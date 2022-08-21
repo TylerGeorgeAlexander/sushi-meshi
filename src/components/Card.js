@@ -2,10 +2,14 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { BsCartPlusFill } from "react-icons/bs";
 
-export default function MenuCard({ props }) {
+export default function MenuCard({ props, index }) {
   return (
     <Card className="box-shadow m-2" style={{ width: "18rem" }}>
-      <Card.Img className="card-image-top img-fluid p-2" variant="top" src={props.img} />
+      <Card.Img
+        className="card-image-top img-fluid p-2"
+        variant="top"
+        src={props.img}
+      />
       <Card.Body className="flex-fill row align-items-end justify-content-center">
         <Card.Title>{props.name}</Card.Title>
         <Card.Text>{props.desc}</Card.Text>

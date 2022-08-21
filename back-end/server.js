@@ -5,6 +5,16 @@ const homeRoutes = require('./routes/home')
 const todoRoutes = require('./routes/todos')
 const menuRoutes = require('./routes/menu')
 
+// Adding cors
+const cors = require('cors');
+
+const corsOption = {
+    origin: ['http://localhost:3000'],
+};
+app.use(cors(corsOption));
+//if you want in every domain then
+app.use(cors())
+
 require('dotenv').config({path: './config/.env'})
 
 connectDB()

@@ -9,7 +9,7 @@ const menuRoutes = require('./routes/menu')
 const cors = require('cors');
 
 const corsOption = {
-    origin: ['http://localhost:3000'],
+    origin: ['http://localhost:4000'],
 };
 app.use(cors(corsOption));
 //if you want in every domain then

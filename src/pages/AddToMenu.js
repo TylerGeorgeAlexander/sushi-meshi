@@ -87,7 +87,7 @@ export default function AddToMenu() {
               <div className="form-group col">
                 <label htmlFor="price">Price</label>
                 <input
-                  type="number"
+                  type="text"
                   id="price"
                   name="price"
                   className="form-control"

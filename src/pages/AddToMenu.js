@@ -6,7 +6,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getItem, updateItem } from "../utils/api";
+import { getItem, createMenuItem, updateItem } from "../utils/api";
 import ErrorAlert from "../layout/ErrorAlert";
 
 export default function AddToMenu() {
@@ -36,30 +36,18 @@ export default function AddToMenu() {
     setItem({ ...item, [name]: value });
   }
 
-  function changeNumberHandler({ target: { name, value } }) {
-    setItem((prevState) => ({
-      ...prevState,
-      [name]: Number(value),
-    }));
-  }
-
-  function viewItemRedirect() {
-    navigate.push(`/dashboard?date=${item.item_date}`);
-  }
-
   async function submitHandler(event) {
     const abortController = new AbortController();
     event.preventDefault();
-    updateItem(item, item_id, abortController.signal).catch(setError);
-    viewItemRedirect();
+    await createMenuItem(item).catch(setError);
 
     return () => abortController.abort();
   }
 
   return (
     <div>
-        <ErrorAlert error={error} />
-        <ErrorAlert error={itemError} />
+      <ErrorAlert error={error} />
+      <ErrorAlert error={itemError} />
       {/*           
           name: "Rainbow Roll",
           price: 11.99,
@@ -81,7 +69,6 @@ export default function AddToMenu() {
                   placeholder="Salmon Roll"
                   onChange={changeHandler}
                   required
-                  value={item}
                 />
               </div>
               <div className="form-group col">
@@ -92,9 +79,8 @@ export default function AddToMenu() {
                   name="price"
                   className="form-control"
                   placeholder="$9.99"
-                  onChange={changeHandler}
+                  // onChange={changeHandler}
                   required
-                  value={item}
                 />
               </div>
               <div className="form-group col">
@@ -105,9 +91,8 @@ export default function AddToMenu() {
                   name="img"
                   className="form-control"
                   placeholder="Image Path/Location"
-                  onChange={changeHandler}
+                  // onChange={changeHandler}
                   required
-                  value={item}
                 />
               </div>
             </div>
@@ -120,9 +105,8 @@ export default function AddToMenu() {
                   name="desc"
                   className="form-control"
                   placeholder="Description"
-                  onChange={changeHandler}
+                  // onChange={changeHandler}
                   required
-                  value={item}
                 />
               </div>
             </div>

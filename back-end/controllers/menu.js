@@ -3,47 +3,28 @@ const Menu = require("../models/Menu");
 module.exports = {
   getMenu: async (req, res) => {
     try {
-      const menuItems = await Menu.find();
+      const menuItems = await Menu.find({});
       // const itemsLeft = await Todo.countDocuments({completed: false})
-      res.send([
-        {
-          name: "Rainbow Roll",
-          price: 11.99,
-          img: "./assets/horizontal-pictures/rainbow-roll.jpg",
-          desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum voluptates voluptatibus maiores illum dicta animi debitis ad aperiam omnis molestias! Corporis corrupti iure sed ex eos? Ad accusantium minus a!",
-        },
-        {
-          name: "Salmon Nigiri",
-          price: 9.99,
-          img: "./assets/horizontal-pictures/salmon-nigiri.jpg",
-          desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum voluptates voluptatibus maiores illum dicta animi debitis ad aperiam omnis molestias!",
-        },
-        {
-          name: "Rainbow Roll",
-          price: 11.99,
-          img: "./assets/horizontal-pictures/rainbow-roll.jpg",
-          desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum voluptates voluptatibus maiores illum dicta animi debitis ad aperiam omnis molestias! Corporis corrupti iure sed ex eos? Ad accusantium minus a!",
-        },
-        {
-          name: "Salmon Nigiri",
-          price: 9.99,
-          img: "./assets/horizontal-pictures/salmon-nigiri.jpg",
-          desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum voluptates voluptatibus maiores illum dicta animi debitis ad aperiam omnis molestias!",
-        },
-      ]);
+      res.send(menuItems);
     } catch (err) {
       console.log(err);
     }
   },
-  // createTodo: async (req, res)=>{
-  //     try{
-  //         await Todo.create({todo: req.body.todoItem, completed: false})
-  //         console.log('Todo has been added!')
-  //         res.redirect('/todos')
-  //     }catch(err){
-  //         console.log(err)
-  //     }
-  // },
+  createMenuItem: async (req, res) => {
+    console.log(req.body)
+    try {
+      await Menu.create({
+        name: req.body.data.name,
+        price: req.body.data.price,
+        img: req.body.data.img,
+        desc: req.body.data.desc,
+      });
+      console.log(`Menu has been added! : ${req.body}`);
+      res.redirect("/menu");
+    } catch (err) {
+      console.log(err);
+    }
+  },
   // markComplete: async (req, res)=>{
   //     try{
   //         await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{

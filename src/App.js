@@ -8,16 +8,20 @@ import NoPage from "./pages/NoPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AddToMenu from "./pages/AddToMenu";
 
+import React, { useState } from "react";
+
 function App() {
+  const [cart, setCart] = useState({ totalPrice: 0 });
+
   return (
     <div className="App">
       <Router>
         <header className="">
-          <NavBar />
+          <NavBar cart={cart} setCart={setCart}/>
         </header>
         <Routes>
           <Route path="/" />
-          <Route path="menu" element={<Menu />} />
+          <Route path="menu" element={<Menu cart={cart} setCart={setCart}/>} />
           <Route path="addtomenu" element={<AddToMenu />} />
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />

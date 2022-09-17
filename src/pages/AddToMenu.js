@@ -6,7 +6,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getItem, createMenuItem, updateItem } from "../utils/api";
+import { getItem, createMenuItem } from "../utils/api";
 import ErrorAlert from "../layout/ErrorAlert";
 
 export default function AddToMenu() {
@@ -37,11 +37,10 @@ export default function AddToMenu() {
   }
 
   async function submitHandler(event) {
-    const abortController = new AbortController();
     event.preventDefault();
     await createMenuItem(item).catch(setError);
 
-    return () => abortController.abort();
+    return navigate("/menu");
   }
 
   return (
@@ -74,13 +73,14 @@ export default function AddToMenu() {
               <div className="form-group col">
                 <label htmlFor="price">Price</label>
                 <input
-                  type="text"
+                  type="string"
                   id="price"
                   name="price"
                   className="form-control"
-                  placeholder="$9.99"
-                  // onChange={changeHandler}
+                  placeholder="9.99"
+                  onChange={changeHandler}
                   required
+                  pattern="^[0-9]+\.?[0-9]{0,2}$"
                 />
               </div>
               <div className="form-group col">
@@ -91,7 +91,7 @@ export default function AddToMenu() {
                   name="img"
                   className="form-control"
                   placeholder="Image Path/Location"
-                  // onChange={changeHandler}
+                  onChange={changeHandler}
                   required
                 />
               </div>
@@ -105,7 +105,7 @@ export default function AddToMenu() {
                   name="desc"
                   className="form-control"
                   placeholder="Description"
-                  // onChange={changeHandler}
+                  onChange={changeHandler}
                   required
                 />
               </div>

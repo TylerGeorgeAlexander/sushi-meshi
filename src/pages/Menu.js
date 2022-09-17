@@ -31,7 +31,7 @@ import Col from "react-bootstrap/Col";
 //   },
 // ];
 
-export default function Menu() {
+export default function Menu({ cart, setCart }) {
   const [data, setData] = useState(null);
 
   //   setData(
@@ -64,9 +64,9 @@ export default function Menu() {
       <Container fluid className="d-flex justify-content-center">
         <Row className="h-100">
           {data &&
-            data.map((props, index) => (
+            data.map((dataElement, index) => (
               <Col className="d-flex justify-content-center" key={index}>
-                <Card props={props} className="" key={index} />
+                <Card dataElement={dataElement} cart={cart} setCart={setCart} key={index} />
               </Col>
             ))}
         </Row>

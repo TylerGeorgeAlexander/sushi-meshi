@@ -10,21 +10,26 @@ module.exports = {
       console.log(err);
     }
   },
+
   createMenuItem: async (req, res) => {
-    console.log(req.body)
+    console.log(req.body.data);
     try {
+      const count = await Menu.find({});
+      const id = (await count.length) + 1;
       await Menu.create({
+        id,
         name: req.body.data.name,
-        price: req.body.data.price,
+        price: Number(req.body.data.price),
         img: req.body.data.img,
         desc: req.body.data.desc,
       });
       console.log(`Menu has been added! : ${req.body}`);
-      res.redirect("/menu");
+      await res.redirect("/menu");
     } catch (err) {
       console.log(err);
     }
   },
+
   // markComplete: async (req, res)=>{
   //     try{
   //         await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{

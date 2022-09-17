@@ -1,12 +1,17 @@
 const mongoose = require("mongoose");
 
 const MenuSchema = new mongoose.Schema({
+  id: {
+    type: Number,
+    required: true,
+    unique: true,
+  },
   name: {
     type: String,
     required: true,
   },
   price: {
-    type: String,
+    type: Number,
     required: false,
   },
   img: {

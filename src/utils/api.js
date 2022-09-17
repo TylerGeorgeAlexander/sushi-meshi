@@ -44,18 +44,18 @@ export async function createMenuItem(data) {
   };
   fetch("http://localhost:2121/menu/add", requestOptions)
     .then((response) => response.json())
-    .then((data) => this.setState({ postId: data.id }));
+    // .then((data) => this.setState({ data }));
 }
 
-export async function updateItem(item, item_id, signal) {
-  let url = new URL(`${API_BASE_URL}/items/${item_id}`);
-  const options = {
-    method: "PUT",
-    headers,
-    body: JSON.stringify({ data: item }),
-    signal,
-  };
+// export async function updateItem(item, item_id, signal) {
+//   let url = new URL(`${API_BASE_URL}/items/${item_id}`);
+//   const options = {
+//     method: "PUT",
+//     headers,
+//     body: JSON.stringify({ data: item }),
+//     signal,
+//   };
 
   // return await fetchJson(url, options, []);
-  return null;
-}
+//   return null;
+// }
